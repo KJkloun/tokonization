@@ -1,1 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>exSpark</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Подключаем внешний CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="webcrumbs">
+    <header>
+        <div class="brand">exSpark</div>
+        <button id="connectButton">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span id="connectText">Connect Wallet</span>
+        </button>
+    </header>
 
+    <div class="main-content">
+        <nav class="sidebar">
+            <div class="sidebar-icon">
+                <span class="material-symbols-outlined">upload</span>
+            </div>
+            <div class="sidebar-icon">
+                <span class="material-symbols-outlined">download</span>
+            </div>
+            <div class="sidebar-icon">
+                <span class="material-symbols-outlined">groups</span>
+            </div>
+            <div class="sidebar-icon">
+                <span class="material-symbols-outlined">delete</span>
+            </div>
+        </nav>
+
+        <main>
+            <div class="content-grid">
+                <section class="section">
+                    <h2>Data to Upload</h2>
+                    <textarea placeholder="Paste your data or drag files here..." id="dataInput"></textarea>
+                    <button class="action-button" id="browseButton">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        Browse Files
+                    </button>
+                </section>
+
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Retrieved Data</h2>
+                        <div class="controls-right">
+                            <button class="action-button" id="exportButton">
+                                <span class="material-symbols-outlined">download</span>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dataTable">
+                        <tr><td>Example</td><td>Sample Data</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="section" style="grid-column: span 2;">
+                    <div class="section-header">
+                        <h2>All Users</h2>
+                        <div class="controls-right">
+                            <button class="action-button" id="sortButton">
+                                <span class="material-symbols-outlined">sort</span>
+                                Sort
+                            </button>
+                            <button class="action-button" id="filterButton">
+                                <span class="material-symbols-outlined">filter_alt</span>
+                                Filter
+                            </button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Date Joined</th>
+                        </tr>
+                        </thead>
+                        <tbody id="usersTable"></tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Sort Modal -->
+<div class="modal" id="sortModal">
+    <div class="modal-content">
+        <h3>Sort Options</h3>
+        <div class="filter-group">
+            <label class="filter-label">Sort By:</label>
+            <select class="flatpickr-input" id="sortField">
+                <option value="username">Username</option>
+                <option value="email">Email</option>
+                <option value="date">Date Joined</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Order:</label>
+            <select class="flatpickr-input" id="sortOrder">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+        <div class="modal-actions">
+            <button class="action-button" onclick="applySort()">Apply</button>
+            <button class="action-button" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Modal -->
+<div class="modal" id="filterModal">
+    <div class="modal-content">
+        <h3>Filter Options</h3>
+        <div class="filter-group">
+            <label class="filter-label">Username contains:</label>
+            <input type="text" id="usernameFilter" class="flatpickr-input">
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Date Range:</label>
+            <input type="text" id="dateRange" class="flatpickr-input" placeholder="Select date range">
+        </div>
+        <div class="modal-actions">
+            <button class="action-button" onclick="applyFilter()">Apply</button>
+            <button class="action-button" onclick="clearFilter()">Clear</button>
+            <button class="action-button" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Подключаем внешний JS -->
+<script src="script.js"></script>
+</body>
+</html>
