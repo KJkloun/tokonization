@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="exSpark - приложение для загрузки данных и управления информацией о пользователях">
     <title>exSpark</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <!-- Подключаем внешний CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
 <div id="webcrumbs">
@@ -20,16 +21,16 @@
 
     <div class="main-content">
         <nav class="sidebar">
-            <div class="sidebar-icon">
+            <div class="sidebar-icon" tabindex="0">
                 <span class="material-symbols-outlined">upload</span>
             </div>
-            <div class="sidebar-icon">
+            <div class="sidebar-icon" tabindex="0">
                 <span class="material-symbols-outlined">download</span>
             </div>
-            <div class="sidebar-icon">
+            <div class="sidebar-icon" tabindex="0">
                 <span class="material-symbols-outlined">groups</span>
             </div>
-            <div class="sidebar-icon">
+            <div class="sidebar-icon" tabindex="0">
                 <span class="material-symbols-outlined">delete</span>
             </div>
         </nav>
@@ -99,11 +100,11 @@
 </div>
 
 <!-- Sort Modal -->
-<div class="modal" id="sortModal">
+<div class="modal" id="sortModal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <h3>Sort Options</h3>
         <div class="filter-group">
-            <label class="filter-label">Sort By:</label>
+            <label class="filter-label" for="sortField">Sort By:</label>
             <select class="flatpickr-input" id="sortField">
                 <option value="username">Username</option>
                 <option value="email">Email</option>
@@ -111,41 +112,40 @@
             </select>
         </div>
         <div class="filter-group">
-            <label class="filter-label">Order:</label>
+            <label class="filter-label" for="sortOrder">Order:</label>
             <select class="flatpickr-input" id="sortOrder">
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </select>
         </div>
         <div class="modal-actions">
-            <button class="action-button" onclick="applySort()">Apply</button>
-            <button class="action-button" onclick="closeModal()">Cancel</button>
+            <button class="action-button" id="applySortButton">Apply</button>
+            <button class="action-button" id="cancelSortButton">Cancel</button>
         </div>
     </div>
 </div>
 
 <!-- Filter Modal -->
-<div class="modal" id="filterModal">
+<div class="modal" id="filterModal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <h3>Filter Options</h3>
         <div class="filter-group">
-            <label class="filter-label">Username contains:</label>
+            <label class="filter-label" for="usernameFilter">Username contains:</label>
             <input type="text" id="usernameFilter" class="flatpickr-input">
         </div>
         <div class="filter-group">
-            <label class="filter-label">Date Range:</label>
+            <label class="filter-label" for="dateRange">Date Range:</label>
             <input type="text" id="dateRange" class="flatpickr-input" placeholder="Select date range">
         </div>
         <div class="modal-actions">
-            <button class="action-button" onclick="applyFilter()">Apply</button>
-            <button class="action-button" onclick="clearFilter()">Clear</button>
-            <button class="action-button" onclick="closeModal()">Cancel</button>
+            <button class="action-button" id="applyFilterButton">Apply</button>
+            <button class="action-button" id="clearFilterButton">Clear</button>
+            <button class="action-button" id="cancelFilterButton">Cancel</button>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<!-- Подключаем внешний JS -->
 <script src="script.js"></script>
 </body>
 </html>
